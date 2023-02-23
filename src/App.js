@@ -1,10 +1,15 @@
 import { Routes, Route } from 'react-router-dom';
 
+import { Book, Category } from './pages';
+
 import './App.css';
 
 function App() {
   return (
-    <div>App</div>
+    <Routes>
+      <Route path="/books" element={<Book />} />
+      <Route path="/category" element={<Category />} />
+    </Routes>
   );
 }
 
