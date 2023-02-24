@@ -3,6 +3,13 @@
   padding: 0;
 }
 
+:root {
+  --clr-primary: #0290ff;
+  --clr-gray: #e8e8e8;
+  --clr-black: #121212;
+  --clr-white: #fff;
+}
+
 body {
   background-color: #f5f6fa;
   font-family:
