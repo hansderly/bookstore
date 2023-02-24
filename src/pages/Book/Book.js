@@ -1,5 +1,6 @@
 import React from 'react';
+import { BookCard } from '../../components';
 
-const Book = () => <div>Book</div>;
+const Book = () => <BookCard />;
 
 export default Book;

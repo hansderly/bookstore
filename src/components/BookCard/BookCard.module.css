@@ -1,0 +1,23 @@
+.container {
+  display: flex;
+  background-color: white;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 90rem;
+  margin-inline: auto;
+  margin-top: 15px;
+  margin-bottom: 15px;
+  padding: 25px;
+}
+
+.bookNameAuthor {
+  margin: 10px 0 25px 0;
+}
+
+.bookNameAuthor > p {
+  color: var(--clr-primary);
+}
+
+.actions {
+  display: flex;
+}

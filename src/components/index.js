@@ -1,4 +1,4 @@
 import Navbar from './Navbar/Navbar';
+import BookCard from './BookCard/BookCard';
 
-// eslint-disable-next-line import/prefer-default-export
-export { Navbar };
+export { Navbar, BookCard };
