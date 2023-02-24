@@ -1,33 +1,26 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 import styles from './BookCard.module.css';
 
-const BookCard = () => (
+const BookCard = ({ title, author }) => (
   <div className={styles.container}>
     <div className={styles.left}>
       <div>Action</div>
       <div className={styles.bookNameAuthor}>
-        <h2>The Hunger Games</h2>
-        <p>Suzanne Collins</p>
+        <h2>{title}</h2>
+        <p>{author}</p>
       </div>
       <div className={styles.actions}>
-        <div>Comments</div>
-        <div>Remove</div>
-        <div>Edit</div>
-      </div>
-    </div>
-    <div>
-      <div>
-        <div>cirle</div>
-        <div>80%</div>
-      </div>
-      <div>
-        <div>current chapter</div>
-        <div>Chapter 12</div>
-        <div>button update progress</div>
+        <button type="button">Remove</button>
       </div>
     </div>
   </div>
 );
+
+BookCard.propTypes = {
+  title: PropTypes.string.isRequired,
+  author: PropTypes.string.isRequired,
+};
 
 export default BookCard;
