@@ -1,6 +1,11 @@
 import React from 'react';
-import { BookCard } from '../../components';
+import { BookCard, Form } from '../../components';
 
-const Book = () => <BookCard />;
+const Book = () => (
+  <div>
+    <BookCard title="The Hunger Game" author="Sydney" />
+    <Form />
+  </div>
+);
 
 export default Book;
