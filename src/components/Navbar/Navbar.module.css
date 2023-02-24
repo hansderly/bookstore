@@ -1,0 +1,35 @@
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 100px;
+  border-bottom: 2px solid lightgray;
+}
+
+.rightNav {
+  display: flex;
+  align-items: center;
+}
+
+.logo {
+  color: #0290ff;
+  font-size: 25px;
+  font-weight: 700;
+}
+
+.navbar > ul {
+  display: flex;
+  list-style: none;
+  gap: 2.563rem;
+}
+
+.navbar a {
+  color: black;
+  text-decoration: none;
+}
+
+.iconNav {
+  border: 1px solid lightgray;
+  border-radius: 50px;
+  padding: 10px;
+}

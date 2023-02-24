@@ -1,22 +1,26 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { ImUser } from 'react-icons/im';
+
+import styles from './Navbar.module.css';
 
 const Navbar = () => (
-  <header>
-    <div>
-      <div>Bookstore CMS</div>
-      <nav>
+  <header className={styles.header}>
+    <div className={styles.rightNav}>
+      <p className={styles.logo}>Bookstore CMS</p>
+      <nav className={styles.navbar}>
         <ul>
           <li>
-            <Link to="/books">Books</Link>
+            <Link to="/books">BOOKS</Link>
           </li>
           <li>
-            <Link to="/category">Category</Link>
+            <Link to="/category">CATEGORY</Link>
           </li>
         </ul>
       </nav>
     </div>
-    <div>icon</div>
+    <div><ImUser className={styles.iconNav} style={{ color: '#0290ff' }} /></div>
+
   </header>
 );
 
