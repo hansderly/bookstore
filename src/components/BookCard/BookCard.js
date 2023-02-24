@@ -12,7 +12,25 @@ const BookCard = ({ title, author }) => (
         <p>{author}</p>
       </div>
       <div className={styles.actions}>
+        <button type="button">Comments</button>
         <button type="button">Remove</button>
+        <button type="button">Edit</button>
+      </div>
+    </div>
+    <div className={styles.right}>
+      <div className={styles.completed}>
+        <div className={styles.circle} />
+        <div className={styles.pourcentage}>
+          <h2>80%</h2>
+          <p>Completed</p>
+        </div>
+      </div>
+      <div>
+        <div className={styles.chapterInfos}>
+          <div>Current Chapter</div>
+          <div>Chapter 12</div>
+        </div>
+        <button type="button">Update progress</button>
       </div>
     </div>
   </div>
