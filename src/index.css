@@ -5,9 +5,10 @@
 
 :root {
   --clr-primary: #0290ff;
-  --clr-gray: #e8e8e8;
-  --clr-black: #121212;
   --clr-white: #fff;
+  --clr-gray: #e8e8e8;
+  --clr-ligthgray: #d3d3d3;
+  --clr-black: #121212;
 }
 
 body {
