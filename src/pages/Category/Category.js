@@ -1,5 +1,5 @@
 import React from 'react';
 
-const Category = () => <div>Category</div>;
+const Category = () => <button type="button">Check status</button>;
 
 export default Category;
