@@ -1,0 +1,46 @@
+.container {
+  display: flex;
+  background-color: white;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 15px;
+  margin-bottom: 15px;
+  padding: 25px;
+}
+
+.bookNameAuthor {
+  margin: 10px 0 25px 0;
+}
+
+.bookNameAuthor > p {
+  color: var(--clr-primary);
+}
+
+.actions {
+  display: flex;
+}
+
+.right {
+  display: flex;
+  gap: 100px;
+}
+
+.circle {
+  border-radius: 50%;
+  width: 4.25rem;
+  height: 4.25rem;
+  border: 5px solid var(--clr-primary);
+  border-left-color: #e8e8e8;
+  -webkit-transform: rotate(45deg);
+  transform: rotate(45deg);
+}
+
+.completed {
+  display: flex;
+  align-items: center;
+  gap: 25px;
+}
+
+.chapterInfos {
+  margin-bottom: 25px;
+}

@@ -1,5 +1,18 @@
-body {
+* {
   margin: 0;
+  padding: 0;
+}
+
+:root {
+  --clr-primary: #0290ff;
+  --clr-white: #fff;
+  --clr-gray: #e8e8e8;
+  --clr-ligthgray: #d3d3d3;
+  --clr-black: #121212;
+}
+
+body {
+  background-color: #f5f6fa;
   font-family:
     -apple-system,
     BlinkMacSystemFont,
