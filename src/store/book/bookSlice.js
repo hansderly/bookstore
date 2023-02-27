@@ -18,6 +18,10 @@ const bookSlice = createSlice({
       books.push({ id, title, author });
     },
 
+    removeBook: ({ books }, { payload }) => {
+      const { id } = payload;
+      books = books.filter((book) => book.id !== id);
+    },
   },
 });
 
