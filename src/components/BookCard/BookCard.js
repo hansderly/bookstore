@@ -3,10 +3,10 @@ import PropTypes from 'prop-types';
 
 import styles from './BookCard.module.css';
 
-const BookCard = ({ title, author }) => (
+const BookCard = ({ title, author, category }) => (
   <div className={styles.container}>
     <div className={styles.left}>
-      <div>Action</div>
+      <div>{category}</div>
       <div className={styles.bookNameAuthor}>
         <h2>{title}</h2>
         <p>{author}</p>
@@ -39,6 +39,7 @@ const BookCard = ({ title, author }) => (
 BookCard.propTypes = {
   title: PropTypes.string.isRequired,
   author: PropTypes.string.isRequired,
+  category: PropTypes.string.isRequired,
 };
 
 export default BookCard;
