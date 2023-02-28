@@ -4,7 +4,26 @@
 import { createSlice } from '@reduxjs/toolkit';
 
 const initialState = {
-  books: [],
+  books: [
+    {
+      id: 1,
+      title: 'The Great Gatsby',
+      author: 'John Smith',
+      category: 'Fiction',
+    },
+    {
+      id: 2,
+      title: 'Anna Karenina',
+      author: 'Leo Tolstoy',
+      category: 'Fiction',
+    },
+    {
+      id: 3,
+      title: 'The Selfish Gene',
+      author: 'Richard Dawkins',
+      category: 'Nonfiction',
+    },
+  ],
 };
 
 const bookSlice = createSlice({
@@ -15,12 +34,14 @@ const bookSlice = createSlice({
     addBook: ({ books }, { payload }) => {
       const { title, author } = payload;
       const id = Math.random();
-      books.push({ id, title, author });
+      books.push({
+        id, title, author, category: 'Action',
+      });
     },
 
-    removeBook: ({ books }, { payload }) => {
+    removeBook: (state, { payload }) => {
       const { id } = payload;
-      books = books.filter((book) => book.id !== id);
+      state.books = state.books.filter((book) => book.id !== id);
     },
   },
 });
