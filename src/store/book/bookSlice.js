@@ -34,7 +34,9 @@ const bookSlice = createSlice({
     addBook: ({ books }, { payload }) => {
       const { title, author } = payload;
       const id = Math.random();
-      books.push({ id, title, author });
+      books.push({
+        id, title, author, category: 'Action',
+      });
     },
 
     removeBook: ({ books }, { payload }) => {
