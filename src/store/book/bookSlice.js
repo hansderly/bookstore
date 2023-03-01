@@ -19,10 +19,8 @@ const getBooks = createAsyncThunk('book/getBooks', async () => {
     const { data } = await axios.get(url);
     return data === '' ? {} : data;
   } catch (error) {
-    console.log(error);
+    return error;
   }
-
-  return {};
 });
 
 const addBook = createAsyncThunk('book/addBooks', async (book) => {
@@ -34,9 +32,8 @@ const addBook = createAsyncThunk('book/addBooks', async (book) => {
     await axios.post(url, dataStringify, config);
     return { msg: 'Book added successfully!' };
   } catch (error) {
-    console.log(error);
+    return error;
   }
-  return null;
 });
 
 const removeBook = createAsyncThunk('book/addBooks', async (payload) => {
@@ -49,9 +46,8 @@ const removeBook = createAsyncThunk('book/addBooks', async (payload) => {
     const { data } = await axios.delete(url, bookIdStringify, config);
     return data;
   } catch (error) {
-    console.log(error);
+    return error;
   }
-  return null;
 });
 
 const initialState = {

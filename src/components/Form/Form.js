@@ -16,7 +16,6 @@ const Form = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     const itemId = nanoid();
-    console.log(form);
     const data = { item_id: itemId, id: itemId, ...form };
     dispatch(addBook(data));
     setForm({ title: '', author: '', category: '' });
