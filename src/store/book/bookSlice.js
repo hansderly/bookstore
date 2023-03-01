@@ -39,6 +39,21 @@ const addBook = createAsyncThunk('book/addBooks', async (book) => {
   return null;
 });
 
+const removeBook = createAsyncThunk('book/addBooks', async (payload) => {
+  const { id } = payload;
+  const endpoint = `/books/${id}`;
+  const url = baseURL + endpoint;
+  const bookIdStringify = JSON.stringify({ item_id: id });
+
+  try {
+    const { data } = await axios.delete(url, bookIdStringify, config);
+    return data;
+  } catch (error) {
+    console.log(error);
+  }
+  return null;
+});
+
 const initialState = {
   books: {},
   isLoading: false,
@@ -69,9 +84,19 @@ const bookSlice = createSlice({
     [addBook.rejected]: (state) => {
       state.isLoading = false;
     },
+
+    [removeBook.pending]: (state) => {
+      state.isLoading = true;
+    },
+    [removeBook.fulfilled]: (state, { payload }) => {
+      state.isLoading = false;
+      console.log(payload);
+    },
+    [removeBook.rejected]: (state) => {
+      state.isLoading = false;
+    },
   },
 });
 
-export const { removeBook } = bookSlice.actions;
-export { getBooks, addBook };
+export { getBooks, addBook, removeBook };
 export default bookSlice.reducer;
