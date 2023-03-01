@@ -21,6 +21,7 @@ const Form = () => {
       item_id: itemId, id: itemId, ...form, category,
     };
     dispatch(addBook(data));
+    setForm({ title: '', author: '' });
   };
 
   return (
