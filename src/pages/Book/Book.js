@@ -9,15 +9,18 @@ const Book = () => {
   return (
     <div className={styles.container}>
       {
-        books.map((book) => (
-          <BookCard
-            key={book.id}
-            id={book.id}
-            title={book.title}
-            author={book.author}
-            category={book.category}
-          />
-        ))
+        Object.keys(books).map((key) => {
+          const currBook = books[key][0];
+          return (
+            <BookCard
+              key={key}
+              id={key}
+              title={currBook.title}
+              author={currBook.author}
+              category={currBook.category}
+            />
+          );
+        })
       }
       <Form />
     </div>

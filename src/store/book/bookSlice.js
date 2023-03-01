@@ -1,50 +1,104 @@
 /* eslint-disable no-unused-vars */
 /* eslint-disable no-param-reassign */
+import { createSlice, createAsyncThunk, nanoid } from '@reduxjs/toolkit';
+import axios from 'axios';
 
-import { createSlice } from '@reduxjs/toolkit';
+export const ID = 'yDbGjL1tReb79e1vei0W';
+const baseURL = `https://us-central1-bookstore-api-e63c8.cloudfunctions.net/bookstoreApi/apps/${ID}`;
+const config = {
+  headers: {
+    'content-type': 'application/json',
+  },
+};
+
+const getBooks = createAsyncThunk('book/getBooks', async () => {
+  const endpoint = '/books';
+  const url = baseURL + endpoint;
+
+  try {
+    const { data } = await axios.get(url);
+    return data === '' ? {} : data;
+  } catch (error) {
+    return error;
+  }
+});
+
+const addBook = createAsyncThunk('book/addBooks', async (book) => {
+  const endpoint = '/books';
+  const url = baseURL + endpoint;
+  const dataStringify = JSON.stringify(book);
+
+  try {
+    await axios.post(url, dataStringify, config);
+    return { msg: 'Book added successfully!' };
+  } catch (error) {
+    return error;
+  }
+});
+
+const removeBook = createAsyncThunk('book/addBooks', async (payload) => {
+  const { id } = payload;
+  const endpoint = `/books/${id}`;
+  const url = baseURL + endpoint;
+  const bookIdStringify = JSON.stringify({ item_id: id });
+
+  try {
+    const { data } = await axios.delete(url, bookIdStringify, config);
+    return data;
+  } catch (error) {
+    return error;
+  }
+});
 
 const initialState = {
-  books: [
-    {
-      id: 1,
-      title: 'The Great Gatsby',
-      author: 'John Smith',
-      category: 'Fiction',
-    },
-    {
-      id: 2,
-      title: 'Anna Karenina',
-      author: 'Leo Tolstoy',
-      category: 'Fiction',
-    },
-    {
-      id: 3,
-      title: 'The Selfish Gene',
-      author: 'Richard Dawkins',
-      category: 'Nonfiction',
-    },
-  ],
+  books: {},
+  isLoading: false,
+  isLoaded: false,
 };
 
 const bookSlice = createSlice({
   name: 'book',
   initialState,
-  reducers: {
-
-    addBook: ({ books }, { payload }) => {
-      const { title, author } = payload;
-      const id = Math.random();
-      books.push({
-        id, title, author, category: 'Action',
-      });
+  reducers: {},
+  extraReducers: {
+    [getBooks.pending]: (state) => {
+      state.isLoading = true;
+    },
+    [getBooks.fulfilled]: (state, actions) => {
+      state.isLoading = false;
+      state.books = actions.payload;
+    },
+    [getBooks.rejected]: (state) => {
+      state.isLoading = false;
     },
 
-    removeBook: (state, { payload }) => {
-      const { id } = payload;
-      state.books = state.books.filter((book) => book.id !== id);
+    [addBook.pending]: (state) => {
+      state.isLoading = true;
+      state.isLoaded = false;
+    },
+    [addBook.fulfilled]: (state, { payload }) => {
+      state.isLoading = false;
+      state.isLoaded = true;
+    },
+    [addBook.rejected]: (state) => {
+      state.isLoading = false;
+      state.isLoaded = false;
+    },
+
+    [removeBook.pending]: (state) => {
+      state.isLoading = true;
+      state.isLoaded = false;
+    },
+    [removeBook.fulfilled]: (state, { payload }) => {
+      state.isLoading = false;
+      state.isLoaded = true;
+    },
+    [removeBook.rejected]: (state) => {
+      state.isLoading = false;
+      state.isLoaded = false;
     },
   },
 });
 
-export const { addBook, removeBook } = bookSlice.actions;
+export { getBooks, addBook, removeBook };
 export default bookSlice.reducer;
