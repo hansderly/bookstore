@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
+import { nanoid } from '@reduxjs/toolkit';
 
 import { addBook } from '../../store/book/bookSlice';
 
@@ -14,7 +15,12 @@ const Form = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    dispatch(addBook(form));
+    const itemId = nanoid();
+    const category = 'Action';
+    const data = {
+      item_id: itemId, id: itemId, ...form, category,
+    };
+    dispatch(addBook(data));
   };
 
   return (

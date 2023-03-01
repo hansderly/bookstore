@@ -17,16 +17,31 @@ const getBooks = createAsyncThunk('book/getBooks', async () => {
 
   try {
     const { data } = await axios.get(url);
-    return data === '' ? [] : data;
+    return data === '' ? {} : data;
   } catch (error) {
     console.log(error);
   }
 
-  return [];
+  return {};
+});
+
+const addBook = createAsyncThunk('book/addBooks', async (book) => {
+  const endpoint = '/books';
+  const url = baseURL + endpoint;
+  const { item_id: itemId } = book;
+  const dataStringify = JSON.stringify(book);
+
+  try {
+    const { data } = await axios.post(url, dataStringify, config);
+    return { itemId };
+  } catch (error) {
+    console.log(error);
+  }
+  return null;
 });
 
 const initialState = {
-  books: [],
+  books: {},
   isLoading: false,
 };
 
@@ -34,14 +49,6 @@ const bookSlice = createSlice({
   name: 'book',
   initialState,
   reducers: {
-
-    addBook: ({ books }, { payload }) => {
-      const { title, author } = payload;
-      const id = nanoid();
-      books.push({
-        id, title, author, category: 'Action',
-      });
-    },
 
     removeBook: (state, { payload }) => {
       const { id } = payload;
@@ -59,9 +66,21 @@ const bookSlice = createSlice({
     [getBooks.rejected]: (state) => {
       state.isLoading = false;
     },
+
+    [addBook.pending]: (state) => {
+      state.isLoading = true;
+    },
+    [addBook.fulfilled]: (state, { payload }) => {
+      state.isLoading = false;
+      const { itemId } = payload;
+      state.booksIds.push(payload);
+    },
+    [addBook.rejected]: (state) => {
+      state.isLoading = false;
+    },
   },
 });
 
-export const { addBook, removeBook } = bookSlice.actions;
-export { getBooks };
+export const { removeBook } = bookSlice.actions;
+export { getBooks, addBook };
 export default bookSlice.reducer;
