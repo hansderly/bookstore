@@ -1,6 +1,6 @@
 /* eslint-disable no-unused-vars */
 /* eslint-disable no-param-reassign */
-import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
+import { createSlice, createAsyncThunk, nanoid } from '@reduxjs/toolkit';
 import axios from 'axios';
 
 export const ID = 'yDbGjL1tReb79e1vei0W';
@@ -37,7 +37,7 @@ const bookSlice = createSlice({
 
     addBook: ({ books }, { payload }) => {
       const { title, author } = payload;
-      const id = Math.random();
+      const id = nanoid();
       books.push({
         id, title, author, category: 'Action',
       });
@@ -54,8 +54,7 @@ const bookSlice = createSlice({
     },
     [getBooks.fulfilled]: (state, actions) => {
       state.isLoading = false;
-      console.log(actions);
-      // state.books = actions.payload;
+      state.books = actions.payload;
     },
     [getBooks.rejected]: (state) => {
       state.isLoading = false;
