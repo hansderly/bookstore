@@ -57,6 +57,7 @@ const removeBook = createAsyncThunk('book/addBooks', async (payload) => {
 const initialState = {
   books: {},
   isLoading: false,
+  isLoaded: false,
 };
 
 const bookSlice = createSlice({
@@ -77,23 +78,28 @@ const bookSlice = createSlice({
 
     [addBook.pending]: (state) => {
       state.isLoading = true;
+      state.isLoaded = false;
     },
     [addBook.fulfilled]: (state, { payload }) => {
       state.isLoading = false;
+      state.isLoaded = true;
     },
     [addBook.rejected]: (state) => {
       state.isLoading = false;
+      state.isLoaded = false;
     },
 
     [removeBook.pending]: (state) => {
       state.isLoading = true;
+      state.isLoaded = false;
     },
     [removeBook.fulfilled]: (state, { payload }) => {
       state.isLoading = false;
-      console.log(payload);
+      state.isLoaded = true;
     },
     [removeBook.rejected]: (state) => {
       state.isLoading = false;
+      state.isLoaded = false;
     },
   },
 });
