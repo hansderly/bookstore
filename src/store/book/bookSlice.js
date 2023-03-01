@@ -28,12 +28,11 @@ const getBooks = createAsyncThunk('book/getBooks', async () => {
 const addBook = createAsyncThunk('book/addBooks', async (book) => {
   const endpoint = '/books';
   const url = baseURL + endpoint;
-  const { item_id: itemId } = book;
   const dataStringify = JSON.stringify(book);
 
   try {
-    const { data } = await axios.post(url, dataStringify, config);
-    return { itemId };
+    await axios.post(url, dataStringify, config);
+    return { msg: 'Book added successfully!' };
   } catch (error) {
     console.log(error);
   }
