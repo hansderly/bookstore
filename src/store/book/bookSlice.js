@@ -47,13 +47,7 @@ const initialState = {
 const bookSlice = createSlice({
   name: 'book',
   initialState,
-  reducers: {
-
-    removeBook: (state, { payload }) => {
-      const { id } = payload;
-      state.books = state.books.filter((book) => book.id !== id);
-    },
-  },
+  reducers: {},
   extraReducers: {
     [getBooks.pending]: (state) => {
       state.isLoading = true;
@@ -71,8 +65,6 @@ const bookSlice = createSlice({
     },
     [addBook.fulfilled]: (state, { payload }) => {
       state.isLoading = false;
-      const { itemId } = payload;
-      state.booksIds.push(payload);
     },
     [addBook.rejected]: (state) => {
       state.isLoading = false;
