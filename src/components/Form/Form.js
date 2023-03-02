@@ -3,6 +3,7 @@ import { useDispatch } from 'react-redux';
 import { nanoid } from '@reduxjs/toolkit';
 
 import { addBook } from '../../store/book/bookSlice';
+import Button from '../Button/Button';
 
 const Form = () => {
   const [form, setForm] = useState({ title: '', author: '', category: '' });
@@ -23,7 +24,7 @@ const Form = () => {
 
   return (
     <>
-      <form onSubmit={handleSubmit}>
+      <form>
         <input required value={form.title} onChange={handleChange} name="title" placeholder="Title" />
         <input required value={form.author} onChange={handleChange} name="author" placeholder="Author" />
         <select name="category" required onChange={handleChange}>
@@ -34,7 +35,7 @@ const Form = () => {
           <option value="Thriller">Thriller</option>
           <option value="Documentary">Documentary</option>
         </select>
-        <button type="submit">Add Book</button>
+        <Button onClick={handleSubmit}>Add Book</Button>
       </form>
     </>
   );
