@@ -29,7 +29,7 @@ const Form = () => {
       <form onSubmit={handleSubmit} className={styles.form}>
         <input type="text" required value={form.title} onChange={handleChange} name="title" placeholder="Title" />
         <input type="text" required value={form.author} onChange={handleChange} name="author" placeholder="Author" />
-        <select className={styles.select} name="category" required onChange={handleChange}>
+        <select value={form.category} className={styles.select} name="category" required onChange={handleChange}>
           <option value="">Category</option>
           <option value="SI-FI">SI-FI</option>
           <option value="Action">Action</option>

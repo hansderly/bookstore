@@ -10,7 +10,7 @@ const style = {
 const Button = ({ onClick, btnType, children }) => {
   const conditionalStyle = {
     backgroundColor: btnType === 'primary' ? '#0290ff' : 'transparent',
-    color: btnType === 'primary' ? '#fff' : '#0290ff',
+    color: btnType === 'primary' ? '#fff' : '#74c2fd',
     padding: btnType === 'primary' ? '10px 40px' : '10px 15px',
   };
   return (
