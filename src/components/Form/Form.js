@@ -26,7 +26,7 @@ const Form = () => {
   return (
     <section className={styles.container}>
       <span className={styles.title}>Add a new book</span>
-      <form className={styles.form}>
+      <form onSubmit={handleSubmit} className={styles.form}>
         <input type="text" required value={form.title} onChange={handleChange} name="title" placeholder="Title" />
         <input type="text" required value={form.author} onChange={handleChange} name="author" placeholder="Author" />
         <select className={styles.select} name="category" required onChange={handleChange}>
@@ -37,7 +37,7 @@ const Form = () => {
           <option value="Thriller">Thriller</option>
           <option value="Documentary">Documentary</option>
         </select>
-        <Button btnType="primary" onClick={handleSubmit}>Add Book</Button>
+        <Button btnType="primary">Add Book</Button>
       </form>
     </section>
   );
