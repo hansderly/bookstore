@@ -17,7 +17,7 @@ const RightCardBook = () => (
         <div>Current Chapter</div>
         <div>Chapter 12</div>
       </div>
-      <Button type="button">Update progress</Button>
+      <Button btnType="primary" type="button">Update progress</Button>
     </div>
   </div>
 );
