@@ -4,6 +4,7 @@ import { useDispatch } from 'react-redux';
 
 import styles from './BookCard.module.css';
 import { removeBook } from '../../store/book/bookSlice';
+import Button from '../Button/Button';
 
 const LeftBookCard = ({
   id, title, author, category,
@@ -17,9 +18,9 @@ const LeftBookCard = ({
         <p>{author}</p>
       </div>
       <div className={styles.actions}>
-        <button type="button">Comments</button>
-        <button onClick={() => dispatch(removeBook({ id }))} type="button">Remove</button>
-        <button type="button">Edit</button>
+        <Button type="button">Comments</Button>
+        <Button onClick={() => dispatch(removeBook({ id }))} type="button">Remove</Button>
+        <Button type="button">Edit</Button>
       </div>
     </div>
   );

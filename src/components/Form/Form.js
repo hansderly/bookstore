@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { nanoid } from '@reduxjs/toolkit';
 
+import styles from './Form.module.css';
 import { addBook } from '../../store/book/bookSlice';
 import Button from '../Button/Button';
 
@@ -23,11 +24,12 @@ const Form = () => {
   };
 
   return (
-    <>
-      <form>
-        <input required value={form.title} onChange={handleChange} name="title" placeholder="Title" />
-        <input required value={form.author} onChange={handleChange} name="author" placeholder="Author" />
-        <select name="category" required onChange={handleChange}>
+    <section className={styles.container}>
+      <span className={styles.title}>Add a new book</span>
+      <form onSubmit={handleSubmit} className={styles.form}>
+        <input type="text" required value={form.title} onChange={handleChange} name="title" placeholder="Title" />
+        <input type="text" required value={form.author} onChange={handleChange} name="author" placeholder="Author" />
+        <select value={form.category} className={styles.select} name="category" required onChange={handleChange}>
           <option value="">Category</option>
           <option value="SI-FI">SI-FI</option>
           <option value="Action">Action</option>
@@ -35,9 +37,9 @@ const Form = () => {
           <option value="Thriller">Thriller</option>
           <option value="Documentary">Documentary</option>
         </select>
-        <Button onClick={handleSubmit}>Add Book</Button>
+        <Button btnType="primary">Add Book</Button>
       </form>
-    </>
+    </section>
   );
 };
 

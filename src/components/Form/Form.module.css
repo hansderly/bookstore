@@ -1,0 +1,33 @@
+.container {
+  border-top: 1px solid rgb(201, 199, 199);
+  margin-top: 50px;
+  padding-top: 25px;
+}
+
+.title {
+  font-size: 25px;
+}
+
+.form {
+  display: flex;
+  gap: 10px;
+  margin-top: 15px;
+}
+
+.form :first-child {
+  flex: 2;
+}
+
+.form input[type=text] {
+  border: 1px solid rgb(201, 199, 199);
+  padding: 15px;
+}
+
+.form :focus {
+  outline: 1px solid rgb(201, 199, 199);
+}
+
+.select {
+  padding: 15px;
+  border: 0;
+}
