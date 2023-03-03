@@ -1,6 +1,7 @@
 import React from 'react';
 
 import styles from './BookCard.module.css';
+import Button from '../Button/Button';
 
 const RightCardBook = () => (
   <div className={styles.right}>
@@ -16,7 +17,7 @@ const RightCardBook = () => (
         <div>Current Chapter</div>
         <div>Chapter 12</div>
       </div>
-      <button type="button">Update progress</button>
+      <Button type="button">Update progress</Button>
     </div>
   </div>
 );
